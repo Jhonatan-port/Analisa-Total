@@ -7,12 +7,14 @@
         <li class="review__game">
             <img src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}", height="100px" width="auto" class="img__review">
             <div>
-                <h3>{{ jogo.titulo }}</h3>
+                <h3>{{ jogo.nome }}</h3>
                 <h3>{{ jogo.categoria }}</h3>
-                <p>{{ jogo.texto }}</p>
+                <p class="texto__review">{{ jogo.review }}</p>
                 
             </div>
+            {% if session['usuario_admin']%}
             <a href="#" class="edita__review">&#9998;</a>
+            {%endif%}
         </li>
         {% endfor %}
     </ul>

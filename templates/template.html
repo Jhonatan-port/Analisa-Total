@@ -10,6 +10,16 @@
 <body>
     <header class="cabecalho">
         <h1 class="titulo">{{ titulo }}</h1>
+        {% if session['usuario_logado'] != None %}
+            <p>Usuario: {{ session['usuario_logado'] }}</p>
+            <div>
+                <a href="{{ url_for('logoff') }}" class="botao">Logoff</a>
+            </div>
+        {% else %}
+        <div>
+            <a href="{{ url_for('login') }}" class="botao">Logon</a>
+        </div>
+        {% endif %}
     </header>
     <main>
         {% block conteudo %}{%endblock%}
