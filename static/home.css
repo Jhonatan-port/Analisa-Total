@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cabecalho{
+    background: linear-gradient(120deg, #444444, #666666);
+    color: #fff;
+    padding: 1em 0;
+}
+
+.titulo{
+    margin-left: 1em;
+    text-transform: uppercase;
+}
+.titulo__centralizado{
+    text-align: center;
+}
+
+.listagem__games{
+    display: flex;
+    justify-content: center;
+
+}
+
+.review__game{
+    display: flex;
+    margin: 2em 0;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 1em 3em 1em 1em;
+    align-items: center;
+}
+.img__review{
+    padding-right: 1em;
+}
+
+.edita__review{
+    font-size: 30px;
+    text-decoration: none;
+    color: darkgrey;
+    margin-left: 1em;
+}

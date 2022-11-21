@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<h1 class="titulo__centralizado">Nossas Reviews</h1>
+<section class="listagem__games">
+    <ul>
+        {% for jogo in lista %}
+        <li class="review__game">
+            <img src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}", height="100px" width="auto" class="img__review">
+            <div>
+                <h3>{{ jogo.titulo }}</h3>
+                <h3>{{ jogo.categoria }}</h3>
+                <p>{{ jogo.texto }}</p>
+                
+            </div>
+            <a href="#" class="edita__review">&#9998;</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{%endblock%}
