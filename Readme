@@ -4,7 +4,10 @@ App criado com objetivo de funcioanr como um review de Games, com uma interface 
 
 1- Proximos passos:
 
-1- Conexão com BD atraves ORM
-2- Criar o sistema de usuarios 
-3- Criar tela de edição dos reviews
+    1- Adicionar a opção de cadastro de usuarios
+    2- Criar tela de edição dos reviews
+
+2- Passos ja executados:
+    1- Conexão com BD atraves ORM
+    2- Criar o sistema de usuarios 
 

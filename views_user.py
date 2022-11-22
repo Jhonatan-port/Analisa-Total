@@ -25,4 +25,5 @@ def autenticar():
 @app.route('/logoff' )
 def logoff():
     session['usuario_logado'] = None
+    session['usuario_admin'] = None
     return redirect(url_for('index'))
