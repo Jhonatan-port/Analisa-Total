@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'home.css') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Analisa-Total</title>
 </head>
+
 <body>
     <header class="cabecalho">
         <h1 class="titulo">{{ titulo }}</h1>
         {% if session['usuario_logado'] != None %}
-            <p>Usuario: {{ session['usuario_logado'] }}</p>
-            <div>
-                <a href="{{ url_for('logoff') }}" class="botao">Logoff</a>
+        <div class="dropdown">
+            <button class=" dropbtn">{{ session['usuario_logado'] }} </button>
+            <div class="dropdown__opt">
+                <a href="{{ url_for('logoff') }}">Logoff</a>
+                {% if session['usuario_admin'] == True %}
+                <a href="#">Adicionar usuario</a>
+                {%endif%}
             </div>
-        {% else %}
-        <div>
-            <a href="{{ url_for('login') }}" class="botao">Logon</a>
         </div>
+        {% else %}
+
+        <div class="dropdown">
+            <button class="dropbtn ">Efetuar login</button>
+            <div class="dropdown__opt">
+                <a href="{{ url_for('login') }}">Login</a>
+
+            </div>
+        </div>
+
         {% endif %}
     </header>
     <main>
         {% block conteudo %}{%endblock%}
     </main>
 </body>
+
 </html>
