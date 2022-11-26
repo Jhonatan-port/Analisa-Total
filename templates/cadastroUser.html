@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <section>
+        
+        <form method="POST" action="{{ url_for('validaCadastro') }}" class="form__login">
+            {{ form.csrf_token() }} <!--necessario para o formulario.-->
+            
+            <div class="form__div">
+                {{ form.nome() }}
+            </div>
+            <div class="form__div">
+                {{ form.nickname() }}
+            </div>
+            <div>
+                {{ form.senha() }}
+            </div>
+            <div>
+                {{ form.admin() }}
+            </div>
+            <div>
+                {{ form.cadastrar() }}
+            </div>
+        </form>
+    </section>
+{%endblock%}

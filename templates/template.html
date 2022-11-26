@@ -20,7 +20,7 @@
             <div class="dropdown__opt">
                 <a href="{{ url_for('logoff') }}">Logoff</a>
                 {% if session['usuario_admin'] == True %}
-                <a href="#">Adicionar usuario</a>
+                <a href="{{ url_for('cadastroUser') }}">Adicionar usuario</a>
                 {%endif%}
             </div>
         </div>
