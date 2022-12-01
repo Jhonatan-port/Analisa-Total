@@ -5,7 +5,15 @@ App criado com objetivo de funcioanr como um review de Games, com uma interface 
 Projeto desenvolvido utilizando a linguagem Python, e para o front-end foi utilizado o bome  velho HTML+CSS, pretendo em um futuro proximo refazer a interface da
 aplicação utilizando TailwindCSS para simplificar e padronizar o front-end
 
-## API utilizada: 
+# Frot-end
+
+HTML
+CSS
+
+# Back-end
+
+Python versão 3.10
+
 Flask versão: 2.0.2
 
 ## Bibliotecas:
@@ -17,6 +25,9 @@ WTForms - Biblioteca utilizada para validação dos forms da aplicação.
 ## Extensões:
 
 Flask Bcrypt: Utilizado para criptografia de senhas salvas e digitadas pelo usuario.
+
+-----
+## Oque ja foi executado:
 
 Funcionalidades ja aplicadas:
 
