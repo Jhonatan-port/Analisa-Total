@@ -6,17 +6,20 @@ Projeto desenvolvido utilizando a linguagem Python, e para o front-end foi utili
 aplicação utilizando TailwindCSS para simplificar e padronizar o front-end
 
 ## API utilizada: 
-
 Flask versão: 2.0.2
------
-Bibliotecas:
+
+## Bibliotecas:
+
 SQLAlchemy - ORM utilizada para conexão com o Banco de dados.
+
 WTForms - Biblioteca utilizada para validação dos forms da aplicação.
------
-Extensões:
+
+## Extensões:
+
 Flask Bcrypt: Utilizado para criptografia de senhas salvas e digitadas pelo usuario.
 
 Funcionalidades ja aplicadas:
+
     1- Conexão com BD atraves ORM
     2- Criar o sistema de usuarios 
     3- tela de cadastro de usuarios, adicionada e funcional
