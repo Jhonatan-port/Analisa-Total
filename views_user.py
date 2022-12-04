@@ -1,6 +1,6 @@
 from models import Usuarios
 from analisaTotal import app, db
-from helpers import FormularioValidaUser, FormularioCadastraUser
+from helpers import FormularioValidaUser, FormularioCadastraUsuario
 from flask import render_template, request,session, redirect, url_for
 from flask_bcrypt import check_password_hash, generate_password_hash
 
@@ -31,19 +31,27 @@ def logoff():
 
 
 
+@app.route('/listaUsuario')
+def listaUsuario():
+    if session['usuario_admin'] == True:
+        listaUsuarios = Usuarios.query.order_by(Usuarios.nickname)
+        return render_template('listaUsuario.html', titulo="Usuarios cadastrados", lista=listaUsuarios)
+    else:
+        return render_template('erro.html')
 
-
-@app.route('/cadastroUser')
-def cadastroUser():
+@app.route('/cadastroUsuario')
+def cadastroUsuario():
    
-    
-    form = FormularioCadastraUser()
+    if session['usuario_admin'] == True:
+        form = FormularioCadastraUsuario()
 
-    return render_template('cadastroUser.html', form = form)
+        return render_template('cadastroUsuario.html', form = form, titulo="Cadastro")
+    else:
+        return render_template('erro.html')
 
 @app.route('/validaCadastro', methods=['POST',])
 def validaCadastro():
-    form = FormularioCadastraUser(request.form)
+    form = FormularioCadastraUsuario(request.form)
 
     #validando se o form foi preenchido corretamente
     if(not form.validate_on_submit()):
@@ -69,3 +77,11 @@ def validaCadastro():
 
     return redirect(url_for('index'))
     
+@app.route("/removeUsuario/<nickname>")
+def removeUsuario(nickname):
+    if session['usuario_admin'] == True:
+        Usuarios.query.filter_by(nickname=nickname).delete()
+        db.session.commit()
+        return redirect(url_for('listaUsuario'))
+    else:
+        return redirect(url_for('index'))

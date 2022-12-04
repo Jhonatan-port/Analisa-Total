@@ -6,7 +6,7 @@ from flask_wtf.csrf import CSRFProtect
 
 
 app = Flask(__name__)
-app.config.from_pyfile('configBD.py')
+app.config.from_pyfile('./setups/configBD.py')
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

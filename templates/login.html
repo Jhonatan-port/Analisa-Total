@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-<div class="div__login">
-    <form method="POST" action="{{ url_for('autenticar') }}" class="form__login">
+<link rel="stylesheet" href="{{ url_for('static', filename='form__user.css') }}">
+<div class="div__central">
+    <form method="POST" action="{{ url_for('autenticar') }}" class="form">
         <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
         {{ form.csrf_token() }} <!--necessario para o formulario.-->
         <div class="form__div">
