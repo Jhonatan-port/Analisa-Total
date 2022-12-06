@@ -1,19 +1,19 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<h1 class="titulo__centralizado">Nossas Reviews</h1>
-<section class="listagem__games">
-    <ul>
+<h1 class="text-6xl text-center font-bold underline mb-4">Nossas Reviews</h1>
+<section class="container mx-auto ">
+    <ul class="flex flex-col gap-4 max-w-xl mx-auto">
         {% for jogo in lista %}
-        <li class="review__game">
-            <img src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}", height="100px" width="auto" class="img__review">
-            <div>
-                <h3>{{ jogo.nome }}</h3>
-                <h3>{{ jogo.categoria }}</h3>
-                <p class="texto__review">{{ jogo.review }}</p>
+        <li class="flex border-2 border-black rounded-lg p-4 gap-2 items-center ">
+            <img src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}",  class="h-24 ">
+            <div class="">
+                <h3 class="font-bold text-lg">{{ jogo.nome }}</h3>
+                <h3 class="font-semibold ">{{ jogo.categoria }}</h3>
+                <p class="flex text-ellipsis overflow-hidden whitespace-nowrap max-w-sm  ">{{ jogo.review }}</p>
                 
             </div>
             {% if session['usuario_admin']%}
-            <a href="#" class="edita__review">&#9998;</a>
+            <a href="#" class="">&#9998;</a>
             {%endif%}
         </li>
         {% endfor %}

@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<section class="listagem__games">
+    <ul>
+        {% for usuario in lista %}
+        <li class="review__game">
+
+            <div>
+                <h3>{{ usuario.nome }}</h3>
+                <h3>{{ usuario.nickname }}</h3>
+                <p>{{ usuario.admin }}</p>
+
+            </div>
+            <div>
+                <a href="#" class="edita__review">&#9998;</a>
+                <a href="{{ url_for('removeUsuario', nickname=usuario.nickname) }}" class="edita__review">🗙</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('cadastroUsuario') }}" class="btn__padrao">Cadastrar novo Usuario</a>
+</section>
+{%endblock%}

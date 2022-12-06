@@ -1,20 +1,23 @@
-{% extends "template.html" %}
-{% block conteudo %}
-<link rel="stylesheet" href="{{ url_for('static', filename='form__user.css') }}">
-<div class="div__central">
-    <form method="POST" action="{{ url_for('autenticar') }}" class="form">
-        <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
-        {{ form.csrf_token() }} <!--necessario para o formulario.-->
-        <div class="form__div">
-            {{ form.nickname(class="form__campo") }}
-        </div>
-        <div class="form__div">
-            {{ form.senha(class="form__campo") }}
-        </div>
-        <div>
-            {{ form.login(class="form__botao") }}
-        </div>
-    </form>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-{%endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/output.css">
+    <title>Bem vindo!</title>
+</head>
+
+<body class="bg-slate-200">
+    <div class="grid grid-cols-2">
+        <section class="bg-slate-600 h-screen rounded-r-full flex flex-col justify-center items-center">
+            <h1 class="text-white text-8xl">Bem vindo</h1>
+            <p class="text-white text-xl">Faça seu login para continuar</p>
+        </section>
+        <section></section>
+    </div>
+
+</body>
+
+</html>
