@@ -1,27 +1,26 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<link rel="stylesheet" href="{{ url_for('static', filename = 'form__user.css') }}">
-<section class="">
-    <div class="div__central">
-        <form method="POST" action="{{ url_for('validaCadastro') }}" class="form">
+<section class="flex justify-center items-center h-semi-screen b">
+    <div class=" border border-gray-400 rounded-lg shadow-xl">
+        <form method="POST" action="{{ url_for('validaCadastro') }}" class="p-8 flex flex-col gap-4 items-center">
             {{ form.csrf_token() }}
             <!--necessario para o formulario.-->
 
-            <div class="form__div">
-                {{ form.nome(class="form__campo") }}
+            <div class="">
+                {{ form.nome(class="form__padrao") }}
             </div>
-            <div class="form__div">
-                {{ form.nickname(class="form__campo") }}
+            <div class="">
+                {{ form.nickname(class="form__padrao") }}
             </div>
             <div>
-                {{ form.senha(class="form__campo") }}
+                {{ form.senha(class="form__padrao") }}
             </div>
-            <div class="form__check">
+            <div class="flex gap-3">
                 {{ form.admin() }}
                 <p>Usuario Administrador</p>
             </div>
             <div>
-                {{ form.cadastrar(class="form__botao") }}
+                {{ form.cadastrar(class="btn__padrao") }}
             </div>
         </form>
     </div>

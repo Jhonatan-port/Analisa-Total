@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+.btn__padrao{
+    @apply bg-btn-padrao text-white px-4 py-2 rounded-md transition-all delay-75 hover:bg-btn-padrao-hover hover:cursor-pointer
+}
+.form__padrao{
+    @apply p-2 rounded-md border-b border-r border-gray-400
+}
+
 .dropbtn {
     background-color: #0497aa;
     color: white;

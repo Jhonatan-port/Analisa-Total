@@ -1,19 +1,23 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<section class="listagem__games">
-    <ul>
+<section class="w-4/5 mx-auto h-screen flex flex-col justify-center items-center gap-5">
+    <ul class="flex flex-col gap-5 ">
         {% for usuario in lista %}
-        <li class="review__game">
+        <li class="flex flex-row items-center justify-between gap-8 rounded-xl border-b border-r border-gray-400 p-4">
 
-            <div>
-                <h3>{{ usuario.nome }}</h3>
-                <h3>{{ usuario.nickname }}</h3>
-                <p>{{ usuario.admin }}</p>
+            <div class="">
+                <h3 class="font-semibold">Nome: {{ usuario.nome }}</h3>
+                <h3>Usuario: {{ usuario.nickname }}</h3>
+                {% if usuario.admin == True %}
+                    <p>Tipo: Administrador </p>
+                {% else %}
+                <p>Tipo: Não administrador </p>
+                {% endif %}
 
             </div>
             <div>
-                <a href="#" class="edita__review">&#9998;</a>
-                <a href="{{ url_for('removeUsuario', nickname=usuario.nickname) }}" class="edita__review">🗙</a>
+                <a href="#" class="">&#9998;</a>
+                <a href="{{ url_for('removeUsuario', nickname=usuario.nickname) }}" class="">🗙</a>
             </div>
         </li>
         {% endfor %}
