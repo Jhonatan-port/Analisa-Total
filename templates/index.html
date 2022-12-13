@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% block conteudo %}
 <h1 class="text-6xl text-center font-bold underline mb-4">Nossas Reviews:</h1>
-<section class="container mx-auto ">
-    <ul class="flex flex-col gap-4 max-w-xl mx-auto">
+<section class="container mx-auto flex flex-col justify-center gap-5">
+    <ul class="flex flex-col  gap-4 max-w-xl mx-auto">
         {% for jogo in lista %}
         <li class="flex border-2 border-black rounded-lg p-4 gap-2 items-center ">
             <img src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}",  class="h-24 ">
@@ -18,5 +18,8 @@
         </li>
         {% endfor %}
     </ul>
+    {% if session['usuario_admin']%}
+    <a href="{{ url_for('cadastroReview') }}" class="btn__padrao max-w-xl mx-auto">Cadastrar nova Review</a>
+    {%endif%}
 </section>
 {%endblock%}

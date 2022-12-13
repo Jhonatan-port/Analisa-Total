@@ -1,6 +1,7 @@
 from analisaTotal import app
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators, SubmitField, PasswordField, BooleanField
+import os
+from wtforms import StringField, validators, SubmitField, PasswordField, BooleanField,TextAreaField
 
 class FormularioValidaUser(FlaskForm):
     nickname = StringField('Nickname', [validators.data_required(), validators.length(min=1, max=50)], render_kw={'placeholder': 'Usuario'})
@@ -13,3 +14,23 @@ class FormularioCadastraUsuario(FlaskForm):
     nome = StringField('Nome', [validators.data_required(), validators.length(min=1, max=20)], render_kw={'placeholder': 'Nome Completo'})
     admin = BooleanField('admin')
     cadastrar = SubmitField('Cadastrar')
+
+class FormularioCadastraReview(FlaskForm):
+    nome = StringField('Nome do Jogo', [validators.data_required(), validators.Length(min=1, max=50)], render_kw={'placeholder': 'Nome do Game'})
+    categoria = StringField('Categoria', [validators.data_required(), validators.Length(min=1, max=40)], render_kw={'placeholder': 'Categoria do Game'})
+    review = TextAreaField('review', [validators.data_required(), validators.Length(min=1, max=255)], render_kw={'placeholder': 'Review'})
+    salvar = SubmitField('Salvar')
+
+def recupera_imagem(id):
+    for nome_arquivo in os.listdir(app.config['UPLOAD_PATH']):
+        if f'capa_{id}' in nome_arquivo:
+            return nome_arquivo
+    
+    return 'Capa_padrao.jpg'
+
+
+def deleta_arquivo(id):
+    arquivo = recupera_imagem(id)
+    if arquivo != 'Capa_padrao':
+        os.remove(os.path.join(app.config['UPLOAD_PATH'], arquivo))
+
