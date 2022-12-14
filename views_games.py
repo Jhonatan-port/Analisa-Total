@@ -3,6 +3,11 @@ from flask import render_template, request, send_from_directory, session, redire
 from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
 
 
+@app.route('/uploads/<nome_arquivo>')
+def imagem(nome_arquivo):
+        return send_from_directory('uploads', nome_arquivo)
+
+
 from models import Jogos
 @app.route('/')
 def index():
@@ -11,12 +16,15 @@ def index():
 
 @app.route('/cadastroReview')
 def cadastroReview():
-    form = FormularioCadastraReview()
-    return render_template('novaReview.html', titulo='Nova Review', form=form)
+    if session['usuario_admin'] == True:
+        form = FormularioCadastraReview()
+        return render_template('novaReview.html', titulo='Nova Review', form=form)
+    else:
+        return redirect(url_for('erro.html'))
     
 
 @app.route('/criarReview', methods=['POST',])
-def criar():
+def criarReview():
     form = FormularioCadastraReview(request.form)
     if(not form.validate_on_submit()):
         return redirect(url_for('cadastroReview'))
@@ -34,7 +42,18 @@ def criar():
     db.session.add(nova_review)
     db.session.commit()
 
+    return redirect(url_for('index'))
 
-@app.route('/uploads/<nome_arquivo>')
-def imagem(nome_arquivo):
-        return send_from_directory('uploads', nome_arquivo)
+
+
+@app.route('/editarReview/<int:id>')
+def editarReview(id):
+    if session['usuario_admin'] == True:
+        review = Jogos.query.filter_by(id=id).first()
+        form = FormularioCadastraReview()
+
+        form.nome.data = review.nome
+        form.categoria.data = review.categoria
+        form.review.data = review.review
+        capa_jogo = recupera_imagem(id)
+        return render_template('editar.html', titulo='Editando jogo', id=id, capa_jogo = capa_jogo, form=form)
