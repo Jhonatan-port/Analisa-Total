@@ -9,6 +9,9 @@
 .form__padrao{
     @apply p-2 rounded-md border-b border-r border-gray-400
 }
+.form__textarea__padrao{
+    @apply w-80 h-80 resize max-w-xs form__padrao
+}
 
 .dropbtn {
     background-color: #0497aa;
@@ -50,4 +53,8 @@
 
 .dropdown:hover .dropbtn {
     background-color: #074a53;
+}
+
+.input__personalizado{
+    @apply hidden
 }

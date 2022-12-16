@@ -556,6 +556,10 @@ video {
   margin-right: auto;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -580,12 +584,24 @@ video {
   height: 80vh;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
 .h-24 {
   height: 6rem;
 }
 
 .h-screen {
   height: 100vh;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-4\/5 {
@@ -598,6 +614,10 @@ video {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .grid-cols-2 {
@@ -660,6 +680,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-xl {
   border-radius: 0.75rem;
 }
@@ -688,6 +712,11 @@ video {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
 .border-black {
@@ -810,6 +839,19 @@ video {
   padding: 0.5rem;
 }
 
+.form__textarea__padrao {
+  height: 20rem;
+  width: 20rem;
+  max-width: 20rem;
+  resize: both;
+  border-radius: 0.375rem;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  padding: 0.5rem;
+}
+
 .dropbtn {
   background-color: #0497aa;
   color: white;
@@ -850,4 +892,16 @@ video {
 
 .dropdown:hover .dropbtn {
   background-color: #074a53;
+}
+
+.input__personalizado {
+  display: none;
+}
+
+.hover\:overflow-visible:hover {
+  overflow: visible;
+}
+
+.hover\:whitespace-normal:hover {
+  white-space: normal;
 }
