@@ -15,13 +15,30 @@
     <header class="bg-slate-600 flex justify-between items-center py-2 px-5">
         <h1 class="text-white font-bold text-4xl">{{ titulo }}</h1>
         {% if session['usuario_logado'] != None %}
-        <div class="dropdown">
-            <button class=" dropbtn">{{ session['usuario_logado'] }} </button>
-            <div class="dropdown__opt">
-                <a href="{{ url_for('logoff') }}">Logoff</a>
-                {% if session['usuario_admin'] == True %}
-                <a href="{{ url_for('listaUsuario') }}">Listar usuarios</a>
-                {%endif%}
+        <div class="relative inline-block text-left">
+            <div>
+                <button type="button" id="dropdown__menu"
+                    class="inline-flex justify-center items-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-900 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                    Menu
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-down dropdown__image" viewBox="0 0 16 16">
+                        <path
+                            d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-down-fill hidden dropdown__image" viewBox="0 0 16 16">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg hidden" id="dropdown__opt">
+                <div class="rounded-md bg-white shadow-xs">
+                    <div class="py-1">
+                        <a href="#" class="dropdown__a">Logoff</a>
+                        <a href="#" class="dropdown__a">Listar usuários</a>
+                    </div>
+                </div>
             </div>
         </div>
         {% else %}
@@ -40,4 +57,7 @@
         {% block conteudo %}{%endblock%}
     </main>
 </body>
+
+<script src="{{url_for('static', filename='script.js')}}"></script>
+
 </html>
