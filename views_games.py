@@ -1,11 +1,9 @@
 from analisaTotal import app, db
 from flask import render_template, request, send_from_directory, session, redirect, url_for
 from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
+import time
 
 
-@app.route('/uploads/<nome_arquivo>')
-def imagem(nome_arquivo):
-        return send_from_directory('uploads', nome_arquivo)
 
 
 from models import Jogos
@@ -21,6 +19,11 @@ def cadastroReview():
         return render_template('novaReview.html', titulo='Nova Review', form=form)
     else:
         return redirect(url_for('erro.html'))
+
+#funcionalidade dedicada ao upload de arquivos de imagens
+@app.route('/uploads/''capa_' + '<nome_arquivo>')
+def imagem(nome_arquivo):
+    return send_from_directory('uploads', nome_arquivo)
     
 
 @app.route('/criarReview', methods=['POST',])
@@ -41,6 +44,11 @@ def criarReview():
     nova_review = Jogos(nome = nome, categoria = categoria, review = review)
     db.session.add(nova_review)
     db.session.commit()
+
+    imagem = request.files['arquivo']
+    upload_path = app.config['UPLOAD_PATH']
+    timestamp = time.time()
+    imagem.save(f'{upload_path}/capa_{nova_review.id}-{timestamp}.jpg')
 
     return redirect(url_for('index'))
 
@@ -72,3 +80,13 @@ def atualizarReview():
     
 
     return redirect(url_for('index'))
+
+@app.route('/removerReview/<int:id>')
+def removerReview(id):
+    if session['usuario_admin'] == True:
+        Jogos.query.filter_by(id=id).delete()
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    else:
+        return redirect(url_for('erro.html'))
