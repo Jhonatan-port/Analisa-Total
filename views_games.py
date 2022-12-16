@@ -55,5 +55,20 @@ def editarReview(id):
         form.nome.data = review.nome
         form.categoria.data = review.categoria
         form.review.data = review.review
-        capa_jogo = recupera_imagem(id)
-        return render_template('editar.html', titulo='Editando jogo', id=id, capa_jogo = capa_jogo, form=form)
+        return render_template('editarReview.html', titulo='Editando jogo', id=id, form=form)
+
+@app.route('/atualizarReview', methods=['POST',])
+def atualizarReview():
+    form = FormularioCadastraReview(request.form)
+
+    if form.validate_on_submit():
+        jogo = Jogos.query.filter_by(id=request.form['id']).first()
+        jogo.nome = form.nome.data
+        jogo.categoria = form.categoria.data
+        jogo.review = form.review.data
+
+        db.session.add(jogo)
+        db.session.commit()
+    
+
+    return redirect(url_for('index'))
