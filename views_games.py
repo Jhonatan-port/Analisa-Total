@@ -1,7 +1,7 @@
 from analisaTotal import app, db
 from flask import render_template, request, send_from_directory, session, redirect, url_for
 from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
-import time
+import os
 
 
 
@@ -21,7 +21,7 @@ def cadastroReview():
         return redirect(url_for('erro.html'))
 
 #funcionalidade dedicada ao upload de arquivos de imagens
-@app.route('/uploads/''capa_' + '<nome_arquivo>')
+@app.route('/uploads/' + '<nome_arquivo>')
 def imagem(nome_arquivo):
     return send_from_directory('uploads', nome_arquivo)
     
@@ -46,9 +46,9 @@ def criarReview():
     db.session.commit()
 
     imagem = request.files['arquivo']
+    _, extensao = os.path.splitext(imagem.filename)
     upload_path = app.config['UPLOAD_PATH']
-    timestamp = time.time()
-    imagem.save(f'{upload_path}/capa_{nova_review.id}-{timestamp}.jpg')
+    imagem.save(f'{upload_path}/capa_{nova_review.id}_{nova_review.nome}{extensao}')
 
     return redirect(url_for('index'))
 
@@ -58,12 +58,15 @@ def criarReview():
 def editarReview(id):
     if session['usuario_admin'] == True:
         review = Jogos.query.filter_by(id=id).first()
+        capa_review = recupera_imagem(id)
         form = FormularioCadastraReview()
 
         form.nome.data = review.nome
         form.categoria.data = review.categoria
         form.review.data = review.review
-        return render_template('editarReview.html', titulo='Editando jogo', id=id, form=form)
+        return render_template('editarReview.html', titulo='Editando jogo', capa_review = capa_review, id=id, form=form)
+
+        
 
 @app.route('/atualizarReview', methods=['POST',])
 def atualizarReview():
@@ -77,16 +80,20 @@ def atualizarReview():
 
         db.session.add(jogo)
         db.session.commit()
-    
+        
+        imagem = request.files['arquivo']
+        _, extensao = os.path.splitext(imagem.filename)
+        upload_path = app.config['UPLOAD_PATH']
+        imagem.save(f'{upload_path}/capa_{jogo.id}_{jogo.nome}{extensao}')
 
     return redirect(url_for('index'))
 
 @app.route('/removerReview/<int:id>')
 def removerReview(id):
     if session['usuario_admin'] == True:
-        Jogos.query.filter_by(id=id).delete()
+        Jogos.query.filter_by(id=id).delete() 
         db.session.commit()
         return redirect(url_for('index'))
-
+        
     else:
         return redirect(url_for('erro.html'))

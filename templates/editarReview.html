@@ -5,13 +5,16 @@
         <form class="w-full" method="POST" action="{{ url_for('atualizarReview') }}" method="post"
             enctype="multipart/form-data" class="p-8 flex flex-col gap-4 items-center">
             <div class=" border border-gray-400 rounded-lg shadow-xl flex flex-col justify-center items-center">
-                <div class="border border-gray-500 rounded-md">
-                    <label for="input__personalizado" class="h-28 cursor-pointer flex justify-center">
-                        <img class="h-28" src="{{  url_for('imagem', nome_arquivo='capa_padrao.jpg') }}"
-                            alt="capa do game">
+                <div class="border border-gray-500 rounded-md flex flex-col items-center p-6 ">
+                    <label for="arquivo" class="h-28 cursor-pointer flex flex-col justify-center w-20">
+                        <figure></figure>
+                        <img class="h-28" class="previa__imagem"
+                            src="{{  url_for('imagem', nome_arquivo=capa_review) }}" alt="capa do game">
+                        <p class="text-center mt-2 ">Alterar</p>
                     </label>
-                    <input type="file" id="input__personalizado" class="input__personalizado">
-                    <p class="text-center mt-2">Mudar capa</p>
+
+                    <input type="file" name="arquivo" id="arquivo" class="input__personalizado">
+
                 </div>
                 <fieldset class="flex flex-col justify-center items-center">
                     {{ form.csrf_token() }}

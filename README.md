@@ -8,7 +8,10 @@ aplicação utilizando TailwindCSS para simplificar e padronizar o front-end
 # Frot-end
 
 HTML
-CSS
+
+##Estilização
+
+Tailwindcss
 
 # Back-end
 
@@ -33,12 +36,13 @@ Funcionalidades ja aplicadas:
 
     1- Conexão com BD atraves ORM
     2- Criar o sistema de usuarios 
-    3- tela de cadastro de usuarios, adicionada e funcional
+    3- Tela de cadastro de usuarios, adicionada e funcional
+    4- Tela de edição de reviews
+    5- Tela para gerenciamento de usuarios
 
 1- Proximos passos:
-
-    1- Adicionar tela para fazer a gestão usuarios.
-    2- Criar tela de edição dos reviews
+    1- Adicionar a funcionalidade de envio de imagens e aprenseta-las na tela inicial juntamente com o review.
+    
 
 
 ## Autor:
