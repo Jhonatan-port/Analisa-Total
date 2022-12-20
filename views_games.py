@@ -10,7 +10,7 @@ from models import Jogos
 @app.route('/')
 def index():
     listaRev = Jogos.query.order_by(Jogos.id)
-    return render_template('index.html', titulo="Analisa Total", lista=listaRev)
+    return render_template('index.html', titulo="Analisa Total", lista=listaRev, recupera_imagem = recupera_imagem)
 
 @app.route('/cadastroReview')
 def cadastroReview():
@@ -58,7 +58,7 @@ def criarReview():
 def editarReview(id):
     if session['usuario_admin'] == True:
         review = Jogos.query.filter_by(id=id).first()
-        capa_review = recupera_imagem(id)
+        capa_review = recupera_imagem(id, review.nome)
         form = FormularioCadastraReview()
 
         form.nome.data = review.nome

@@ -21,9 +21,9 @@ class FormularioCadastraReview(FlaskForm):
     review = TextAreaField('review', [validators.data_required(), validators.Length(min=1, max=255)], render_kw={'placeholder': 'Review'})
     salvar = SubmitField('Salvar')
 
-def recupera_imagem(id):
+def recupera_imagem(id, nome_review):
     for nome_arquivo in os.listdir(app.config['UPLOAD_PATH']):
-        if f'capa_{id}' in nome_arquivo:
+        if f'capa_{id}' and nome_review in nome_arquivo:
             return nome_arquivo
     
     return 'Capa_padrao.jpg'
