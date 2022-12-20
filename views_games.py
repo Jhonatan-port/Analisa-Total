@@ -1,5 +1,5 @@
 from analisaTotal import app, db
-from flask import render_template, request, send_from_directory, session, redirect, url_for
+from flask import render_template, request, send_from_directory, session, redirect, url_for, flash
 from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
 import os
 
@@ -93,7 +93,11 @@ def removerReview(id):
     if session['usuario_admin'] == True:
         Jogos.query.filter_by(id=id).delete() 
         db.session.commit()
+        
+        flash('deletado', 'erro')
+
         return redirect(url_for('index'))
+
         
     else:
         return redirect(url_for('erro.html'))

@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities; 
+ 
 
 .btn__padrao{
     @apply bg-btn-padrao text-white px-4 py-2 rounded-md transition-all delay-75 hover:bg-btn-padrao-hover hover:cursor-pointer
@@ -19,4 +19,13 @@
 
 .input__personalizado{
     @apply hidden
+}
+
+.div__mensagem__erro{
+    @apply grid grid-cols-9 mt-2 w-80 h-20 bg-red-200 absolute left-1/2 my-auto z-10 border-2 border-red-300 rounded-lg bg-opacity-95
+}
+
+
+.div__mensagem__sucesso{
+    @apply grid grid-cols-9 mt-2 w-80 h-20 bg-green-200 absolute left-1/2 my-auto z-10 border-2 border-green-300 rounded-lg bg-opacity-95
 }
