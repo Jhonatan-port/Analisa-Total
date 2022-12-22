@@ -5,12 +5,15 @@ const dropDownOpt = document.getElementById('dropdown__opt');
 const dropdownAtivar = document.getElementById('dropdown__Ativar');
 const dropdownAtivo = document.getElementById('dropdown__Ativo');
 const conteudo = document.getElementById('conteudo__principal');
+const mensagem = document.getElementById('mensagem__flash');
+const fecharMensagem = document.getElementById('fechar__mensagem');
 var mostrarDropdown = false
+
+
 
 window.addEventListener('load', function(){
 menuDropdown.addEventListener('click', function(){
     acionaDropdown()
-    
 })
 
 conteudo.addEventListener('click', function(){
@@ -32,9 +35,9 @@ function acionaDropdown(){
 
 })
 
-
 // Funcionalidade referente a alteração de capa da tela editar review
 $('form input[type="file"]').change(event => {
+  console.log('teste');
   let arquivos = event.target.files;
   if (arquivos.length === 0) {
     console.log('sem imagem pra mostrar')
@@ -49,3 +52,8 @@ $('form input[type="file"]').change(event => {
       }
   }
 });
+
+fecharMensagem.addEventListener('click', event => {
+  event.preventDefault();
+  mensagem.style.display = 'none';
+})

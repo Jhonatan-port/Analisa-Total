@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% block conteudo %}
 <h1 class="text-6xl text-center font-bold underline mb-4">Nossas Reviews:</h1>
-<section class="container mx-auto flex flex-col justify-center gap-5">
+<section class="container mx-auto flex flex-col justify-center gap-5 min-h-screen">
     <ul class="flex flex-col  gap-4 max-w-xl mx-auto">
         {% for jogo in lista %}
         <li class="grid grid-cols-7 border-2 border-black rounded-lg p-4 gap-2 items-center bg-white shadow-lg">

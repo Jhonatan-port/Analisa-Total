@@ -1,5 +1,5 @@
 from analisaTotal import app, db
-from flask import render_template, request, send_from_directory, session, redirect, url_for, flash
+from flask import render_template, request, send_from_directory, session, redirect, url_for, flash, get_flashed_messages
 from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
 import os
 
@@ -38,7 +38,7 @@ def criarReview():
     checa_review = Jogos.query.filter_by(nome = nome).first()
 
     if checa_review:
-        print('Review ja existente')
+        flash('Review ja existente')
         return redirect(url_for('index'))
 
     nova_review = Jogos(nome = nome, categoria = categoria, review = review)
@@ -47,8 +47,9 @@ def criarReview():
 
     imagem = request.files['arquivo']
     _, extensao = os.path.splitext(imagem.filename)
-    upload_path = app.config['UPLOAD_PATH']
-    imagem.save(f'{upload_path}/capa_{nova_review.id}_{nova_review.nome}{extensao}')
+    if(extensao != ''):
+        upload_path = app.config['UPLOAD_PATH']
+        imagem.save(f'{upload_path}/capa_{nova_review.id}_{nova_review.nome}{extensao}')
 
     return redirect(url_for('index'))
 
@@ -94,7 +95,7 @@ def removerReview(id):
         Jogos.query.filter_by(id=id).delete() 
         db.session.commit()
         
-        flash('deletado', 'erro')
+        flash('Deletado')
 
         return redirect(url_for('index'))
 

@@ -26,6 +26,6 @@
 }
 
 
-.div__mensagem__sucesso{
-    @apply grid grid-cols-9 mt-2 w-80 h-20 bg-green-200 absolute left-1/2 my-auto z-10 border-2 border-green-300 rounded-lg bg-opacity-95
+.div__mensagem{
+    @apply grid grid-cols-9 mt-2 w-80 h-20 bg-slate-100 absolute left-1/2 my-auto z-10 border-2 border-gray-600 rounded-lg bg-opacity-95
 }

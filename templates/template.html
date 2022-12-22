@@ -72,48 +72,36 @@
 
         {% endif %}
     </header>
-    <main id="conteudo__principal" class="bg-gray-100">
-
-
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
+    <main id="conteudo__principal" class="bg-gray-100 pb-2">
+        
+        
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-        {% if categoria == 'sucesso' %}
-        <div class="div__mensagem__sucesso" style="transform: translateX(-50%);">
-            <p class="col-span-8 text-center flex justify-center items-center ">Lorem, ipsum dolor sit amet </p>
-            <div class="flex justify-center items-center border-l border-green-500">
-                <button>
+        <div id="mensagem__flash" class="div__mensagem flashes" style="transform: translateX(-50%);">
+            {% for message in messages %}
+              <p  class="col-span-8 text-center flex justify-center items-center ">{{ message }}</p>
+            {% endfor %}
+            <div class="flex justify-center items-center border-l border-gray-500">
+                <button id="fechar__mensagem">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        class="bi bi-x border border-green-500 text-green-500 bg-slate-200 hover:bg-slate-300 rounded-full"
+                        class="bi bi-x border border-gray-500 text-black bg-slate-200 hover:bg-slate-300 rounded-full"
                         viewBox="0 0 16 16">
                         <path
                             d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                     </svg>
                 </button>
             </div>
-        </div>
-        {% elif categoria == 'erro' %}
-        <div class="div__mensagem__erro" style="transform: translateX(-50%);">
-            <p class="col-span-8 text-center flex justify-center items-center ">Lorem, ipsum dolor sit amet </p>
-            <div class="flex justify-center items-center border-l border-red-500">
-                <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        class="bi bi-x border border-red-500 text-red-500 bg-slate-200 hover:bg-slate-300 rounded-full"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+          </div>
         {% endif %}
-        {% endif %}
-        {% endwith %}
+      {% endwith %}
+
+
+        
 
         {% block conteudo %}{%endblock%}
     </main>
     <footer
-        class=" bg-gradient-to-br from-slate-500 to-slate-700 flex flex-col flex-grow  justify-center items-center mt-3">
+        class=" bg-gradient-to-br from-slate-500 to-slate-700 flex flex-col flex-grow  justify-center items-center">
 
         <p class="text-white text-center">Pagina desenvolvida por: <br> Jhonatan dos Santos</p>
         <div class="flex gap-4">
