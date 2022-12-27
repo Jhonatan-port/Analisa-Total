@@ -40,8 +40,12 @@ Funcionalidades ja aplicadas:
     4- Tela de edição de reviews
     5- Tela para gerenciamento de usuarios
 
-1- Proximos passos:
-    1- Adicionar a funcionalidade de envio de imagens e aprenseta-las na tela inicial juntamente com o review.
+## Telas do sistema
+
+- Tela de login
+
+
+
     
 
 

@@ -1,14 +1,13 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<section class="flex justify-center items-center h-semi-screen">
-    <div class="w-96">
+<section class="flex justify-center items-center h-96vh">
         <form class="w-full" method="POST" action="{{ url_for('atualizarReview') }}" method="post"
-            enctype="multipart/form-data" class="p-8 flex flex-col gap-4 items-center">
-            <div class=" border border-gray-400 rounded-lg shadow-xl flex flex-col justify-center items-center">
-                <div class="border border-gray-500 rounded-md flex flex-col items-center p-6 ">
-                    <label for="arquivo" class="h-28 cursor-pointer flex flex-col justify-center w-20">
+            enctype="multipart/form-data" class="flex flex-col gap-4 items-center">
+            <div class="  flex flex-col justify-center items-center p-8 gap-6 max-w-screen">
+                <div class="border border-gray-500 rounded-md flex flex-col items-center  ">
+                    <label for="arquivo" class="cursor-pointer flex flex-col justify-center ">
                         <figure></figure>
-                        <img class="h-28" class="previa__imagem"
+                        <img class="h-60" id="previa__imagem"
                             src="{{  url_for('imagem', nome_arquivo=capa_review) }}" alt="capa do game">
                         <p class="text-center mt-2 ">Alterar</p>
                     </label>
@@ -16,7 +15,7 @@
                     <input type="file" name="arquivo" id="arquivo" class="input__personalizado">
 
                 </div>
-                <fieldset class="flex flex-col justify-center items-center">
+                <fieldset class="flex flex-col justify-center items-center gap-6">
                     {{ form.csrf_token() }}
                     <!--necessario para o formulario.-->
                     <input type="hidden" name="id" value="{{ id }}">

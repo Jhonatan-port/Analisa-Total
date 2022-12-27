@@ -8,8 +8,12 @@ module.exports = {
         'btn-padrao-hover' : '#074a53'
       },
       height: {
-        'semi-screen' : '80vh'
+        '96vh' : '96vh',
+        
       },
+      minHeight: {
+        '86vh' : '86vh'
+      }
     },
   },
   plugins: [],

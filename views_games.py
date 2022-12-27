@@ -1,6 +1,6 @@
 from analisaTotal import app, db
 from flask import render_template, request, send_from_directory, session, redirect, url_for, flash, get_flashed_messages
-from helpers import FormularioCadastraUsuario, FormularioCadastraReview, recupera_imagem, deleta_arquivo
+from helpers import FormularioCadastraReview, recupera_imagem, deleta_arquivo
 import os
 
 
@@ -92,6 +92,8 @@ def atualizarReview():
 @app.route('/removerReview/<int:id>')
 def removerReview(id):
     if session['usuario_admin'] == True:
+        review = Jogos.query.filter_by(id=id).first()
+        deleta_arquivo(id, review.nome)
         Jogos.query.filter_by(id=id).delete() 
         db.session.commit()
         
@@ -102,3 +104,12 @@ def removerReview(id):
         
     else:
         return redirect(url_for('erro.html'))
+
+@app.route('/leitura/<int:id>')
+def leitura(id):
+    review = Jogos.query.filter_by(id=id).first()
+    capa_review = recupera_imagem(id, review.nome)
+
+    nome = review.nome
+
+    return render_template('leitura.html', titulo='Visualizando jogo', capa_review=capa_review, id=id, nome=nome, categoria=review.categoria, review=review.review)

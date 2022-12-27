@@ -1,5 +1,5 @@
 const inputImagem = document.querySelector('.input__personalizado');
-const previaImagem = document.querySelector('.previa__imagem');
+const previaImagem = document.getElementById('previa__imagem');
 const menuDropdown = document.getElementById('dropdown__menu');
 const dropDownOpt = document.getElementById('dropdown__opt');
 const dropdownAtivar = document.getElementById('dropdown__Ativar');
@@ -44,7 +44,7 @@ $('form input[type="file"]').change(event => {
   } else {
       if(arquivos[0].type == 'image/jpeg' || arquivos[0].type == 'image/png') {
         $('img').remove();
-        let imagem = $('<img class=" h-28">');
+        let imagem = $('<img class=" h-60">');
         imagem.attr('src', window.URL.createObjectURL(arquivos[0]));
         $('figure').prepend(imagem);
       } else {

@@ -3,7 +3,7 @@
 <section class="w-4/5 mx-auto h-screen flex flex-col justify-center items-center gap-5">
     <ul class="flex flex-col gap-5 ">
         {% for usuario in lista %}
-        <li class="flex flex-row items-center justify-between gap-8 rounded-xl border-b border-r border-gray-400 p-4">
+        <li class="flex flex-row items-center justify-between gap-8 rounded-xl border-b border-r border-gray-400 p-4 bg-slate-50">
 
             <div class="">
                 <h3 class="font-semibold">Nome: {{ usuario.nome }}</h3>
@@ -16,7 +16,7 @@
 
             </div>
             <div>
-                <a href="#" class="">&#9998;</a>
+                <a href="{{ url_for('editarUsuario', nickname = usuario.nickname) }}" class="">&#9998;</a>
                 <a href="{{ url_for('removeUsuario', nickname=usuario.nickname) }}" class="">🗙</a>
             </div>
         </li>

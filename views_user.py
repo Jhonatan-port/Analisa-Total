@@ -1,6 +1,6 @@
 from models import Usuarios
 from analisaTotal import app, db
-from helpers import FormularioValidaUser, FormularioCadastraUsuario
+from helpers import FormularioValidaUser, FormularioCadastraUsuario, FormularioAlteraUsuario
 from flask import render_template, request,session, redirect, url_for
 from flask_bcrypt import check_password_hash, generate_password_hash
 
@@ -76,7 +76,36 @@ def validaCadastro():
 
 
     return redirect(url_for('index'))
-    
+
+
+@app.route('/editarUsuario/<string:nickname>')
+def editarUsuario(nickname):
+    if session['usuario_admin'] == True:
+        usuario =  Usuarios.query.filter_by(nickname=nickname).first()
+        form = FormularioAlteraUsuario()
+
+        form.nickname.data = usuario.nickname
+        form.nome.data = usuario.nome
+        form.admin.data = usuario.admin
+
+
+        return render_template('editarUsuario.html', titulo='Editando Usuario', usuario = usuario, form=form)
+
+@app.route('/atualizarUsuario', methods=['POST',])
+def atualizarUsuario():
+    form = FormularioAlteraUsuario(request.form)
+
+    if form.validate_on_submit():
+        usuario = Usuarios.query.filter_by(nickname=request.form['nickname']).first()
+        usuario.nome = form.nome.data
+        usuario.nickname = form.nickname.data
+        usuario.admin = form.admin.data
+
+        db.session.add(usuario)
+        db.session.commit()
+
+    return redirect(url_for('listaUsuario'))
+
 @app.route("/removeUsuario/<nickname>")
 def removeUsuario(nickname):
     if session['usuario_admin'] == True:

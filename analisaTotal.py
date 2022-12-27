@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.config.from_pyfile('./setups/configBD.py')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

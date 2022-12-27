@@ -1,19 +1,22 @@
 {% extends "template.html" %}
 {% block conteudo %}
-<h1 class="text-6xl text-center font-bold underline mb-4">Nossas Reviews:</h1>
-<section class="container mx-auto flex flex-col justify-center gap-5 min-h-screen">
+<h1 class="text-6xl text-center font-bold underline mb-2">Nossas Reviews:</h1>
+<section class="container mx-auto flex flex-col justify-center gap-5 min-h-86vh">
     <ul class="flex flex-col  gap-4 max-w-xl mx-auto">
         {% for jogo in lista %}
-        <li class="grid grid-cols-7 border-2 border-black rounded-lg p-4 gap-2 items-center bg-white shadow-lg">
+        <li  class="grid grid-cols-7 border-2 border-black rounded-lg p-4 gap-2 items-center bg-white shadow-lg ">
+            
             <img src="{{url_for('imagem', nome_arquivo=recupera_imagem(jogo.id, jogo.nome))}}" , class="h-24 w-20">
-            <div class="col-span-5">
+            <a href="{{ url_for( 'leitura', id=jogo.id ) }}" class="col-span-5">
+            <div class="">
                 <h3 class="font-bold text-lg">{{ jogo.nome }}</h3>
                 <h3 class="font-semibold ">{{ jogo.categoria }}</h3>
                 <p
-                    class="flex text-ellipsis overflow-hidden whitespace-nowrap max-w-sm hover:whitespace-normal hover:overflow-visible  ">
+                    class="flex text-ellipsis overflow-hidden whitespace-nowrap max-w-sm   ">
                     {{ jogo.review }}</p>
 
             </div>
+        </a>
             <div class="flex justify-around">
                 {% if session['usuario_admin']%}
 
@@ -32,6 +35,7 @@
                 {%endif%}
             </div>
         </li>
+    </a>
         {% endfor %}
     </ul>
     {% if session['usuario_admin']%}

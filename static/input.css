@@ -7,10 +7,10 @@
     @apply bg-btn-padrao text-white px-4 py-2 rounded-md transition-all delay-75 hover:bg-btn-padrao-hover hover:cursor-pointer
 }
 .form__padrao{
-    @apply p-2 rounded-md border-b border-r border-gray-400
+    @apply p-2 rounded-md border-b border-r border-gray-400 w-96 
 }
 .form__textarea__padrao{
-    @apply w-80 h-80 resize max-w-xs form__padrao
+    @apply  h-80 resize w-96 max-w-3xl
 }
 
 .dropdown__a{
