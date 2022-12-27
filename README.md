@@ -41,8 +41,43 @@ Funcionalidades ja aplicadas:
     5- Tela para gerenciamento de usuarios
 
 
+## Telas do projeto:
+
+- Tela de Login:
+
+    ![Tela de Login](https://github.com/Jhonatan-port/assets/blob/main/Tela%20de%20Login.png)
+    
+    
+ - Tela Principal:
+
+    ![Tela Principal](https://github.com/Jhonatan-port/assets/blob/main/Tela%20principal.png)
+
+ - Tela de Leitura da review:
+
+    ![Tela de Leitura da review](https://github.com/Jhonatan-port/assets/blob/main/Leitura%20Review.png)
+
+ - Tela de cadastro de Reviews:
+
+    ![Tela de cadastro de Reviews](https://github.com/Jhonatan-port/assets/blob/main/Nova%20Review.png)
+
+ - Tela de Edição de Reviews:
+
+    ![Tela de Edição de Reviews](https://github.com/Jhonatan-port/assets/blob/main/editar%20Review.png)
+
+ - Tela de Listagem Usuarios
+
+    ![Tela de listagem Usuarios](https://github.com/Jhonatan-port/assets/blob/main/Usuarios%20Cadastrados.png)
+
+ - Tela de cadastro de Usuario:
+
+    ![Tela de cadastro de Usuario](https://github.com/Jhonatan-port/assets/blob/main/Cadastro%20de%20usuario.png)
+
+ - Tela de Alteração de Usuarios
+
+    ![Tela de Alteração de Usuarios](https://github.com/Jhonatan-port/assets/blob/main/Editar%20Usuarios.png)
     
 
+## **Todas as telas atendem a uma responsividade basica para telas menores.
 
 ## Autor:
 Jhonatan dos Santos
