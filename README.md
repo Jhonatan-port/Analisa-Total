@@ -77,7 +77,7 @@ Funcionalidades ja aplicadas:
     ![Tela de Alteração de Usuarios](https://github.com/Jhonatan-port/assets/blob/main/Editar%20Usuarios.png)
     
 
-## **Todas as telas atendem a uma responsividade basica para telas menores.
+### **Todas as telas atendem a uma responsividade basica para telas menores.
 
 ## Autor:
 Jhonatan dos Santos
