@@ -40,11 +40,6 @@ Funcionalidades ja aplicadas:
     4- Tela de edição de reviews
     5- Tela para gerenciamento de usuarios
 
-## Telas do sistema
-
-- Tela de login
-
-
 
     
 
