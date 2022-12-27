@@ -1,11 +1,8 @@
 # Analisa Total
 
-Projeto desenvolvido para cadastro de reviews de games, sendo possivel cadastrar o nome do game, sua categoria, a sua respectiva review, e tambem a imagem de capa do game para ser exibida na pagina principal.
+Projeto desenvolvido para cadastro de reviews de games, sendo possível cadastrar o nome do game, sua categoria, a sua respectiva review, e também a imagem de capa do game para ser exibida na página principal.
 
-Projeto desenvolvido utilizando a linguagem Python, e para o front-end foi utilizado o bome  velho HTML+CSS, pretendo em um futuro proximo refazer a interface da
-aplicação utilizando TailwindCSS para simplificar e padronizar o front-end.
-
-
+Projeto desenvolvido utilizando a linguagem Python, e com front-end desenvolvido utilizando HTML e TailwindCSS.
 
 # Frot-end
 
