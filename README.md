@@ -8,7 +8,7 @@ Projeto desenvolvido utilizando a linguagem Python, e com front-end desenvolvido
 
 HTML
 
-##Estilização
+## Estilização
 
 Tailwindcss
 
